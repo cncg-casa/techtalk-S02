@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    tier: backend
+  name: backend
+spec:
+  template:
+    metadata:
+      labels:
+        tier: backend
+    spec:
+      containers:
+      - name: backend
+        image: cncgcasa/backend:v1
+        env:
+        - name: GREETING
+          value: Hello
+        - name: NAME
+          value: Community
+      restartPolicy: Never
+      

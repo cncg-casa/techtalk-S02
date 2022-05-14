@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydbserver
+  labels:
+    tier: data
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: data
+  template:
+    metadata:
+      labels:
+        tier: data
+    spec:
+      containers:
+      - name: mydbserver
+        image: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: mypassword
+        ports:
+        - containerPort: 3306
+        resources: {}
+          
